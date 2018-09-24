@@ -1,5 +1,11 @@
-# tibia-map-csv
-1. Unzip "map.zip" file
-2. Import into MySQL by query :
+# Import into MySQL
+1. Unzip file "map.zip"
+2. Create table 
+...
+CREATE TABLE `map` ( `x` INT NOT NULL , `y` INT NOT NULL , `z` INT NOT NULL , `id` INT NOT NULL , INDEX `all` (`x`, `y`, `z`));
+...
 
-LOAD DATA LOCAL INFILE 'C:/Users/userName/Desktop/map.csv' INTO TABLE map FIELDS TERMINATED BY ';' LINES TERMINATED BY '\n';
+3. Import into MySQL by query :
+...
+LOAD DATA LOCAL INFILE 'C:/Users/{UserName}/Desktop/map.csv' INTO TABLE map FIELDS TERMINATED BY ';' LINES TERMINATED BY '\n';
+...
