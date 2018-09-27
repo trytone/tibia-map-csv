@@ -14,7 +14,7 @@
 
 Load all tiles from Carlin Town :
 
-``SELECT x-32286 as xr,y-31744 as yr, id FROM map WHERE x > 32286 AND x < 32415 AND y > 31744 AND y < 31860 AND z = 7`
+`SELECT x-32286 as xr,y-31744 as yr, id FROM map WHERE x > 32286 AND x < 32415 AND y > 31744 AND y < 31860 AND z = 7`
 
 Count tiles repeat from Carlin Town : 
 
