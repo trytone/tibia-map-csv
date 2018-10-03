@@ -12,9 +12,15 @@
 
 # Example
 
-Load all tiles from Carlin Town :
+Load all tiles from Carlin Town (item_id):
 
-`SELECT x-32286 as xr,y-31744 as yr, id FROM map WHERE x > 32286 AND x < 32415 AND y > 31744 AND y < 31860 AND z = 7`
+`SELECT x-32286 as xr,y-31744 as yr,z-7 as zr, id FROM map WHERE x > 32286 AND x < 32415 AND y > 31744 AND y < 31860`
+
+Load all tiles from Carlin Town (sprite_id)
+
+`SELECT m.x-32286,m.y-31744,m.z-7,s.sprite_id FROM map m 
+INNER JOIN (SELECT item_id,sprite_id FROM sprites GROUP BY item_id) AS s ON s.item_id = m.id
+WHERE m.x > 32286 AND m.x < 32415 AND m.y > 31744 AND m.y < 31860`
 
 Count tiles repeat from Carlin Town : 
 
