@@ -1,12 +1,17 @@
+#!/usr/bin/perl
+
+# Configuration 
+my $inputFilePath = "C:\\Users\\Kamil\\Desktop\\Tibia.dat";
+my $outputFilePath = "C:\\Users\\Kamil\\Desktop\\item2sprites.csv";
 my $id = 100;
 my $maxId = 10939;
-my $offset = 12;
-my $binary = '';
 
-open(INPUT, "Tibia.dat") or die "ERROR : Cannot open tibia.dat.\n";
-open(OUTPUT,'>','cross_sprites.csv') or die "ERROR : Cannot open output file\n";
+# Open read/write files
+open(INPUT, $inputFilePath) or die "ERROR : Cannot open tibia.dat.\n";
+open(OUTPUT,'>',$outputFilePath) or die "ERROR : Cannot open output file\n";
 
 # Read Tibia.dat to bytes array
+my $binary = '';
 while (<INPUT>) {
     $value = unpack  "H*", $_;
 	$value =~ s/(..)/$1 /g;
@@ -15,8 +20,9 @@ while (<INPUT>) {
 close(INPUT);
 $binary =~ s/\s//g;
 my @bytes = ( $binary =~ m/../g );	
+my $offset = 12;
 
-
+# Read bytes until end of file
 while(1){
 	my ($width,$height,$frame,$xRepeat,$yRepeat,$zRepeat,$animation,$headerOffset) = (0,0,0,0,0,0,0,7);
 	if($bytes[$offset] ne 'ff'){ # next byte until start of object
